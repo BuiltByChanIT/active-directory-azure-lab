@@ -1,14 +1,9 @@
 # Active Directory Deployment in Microsoft Azure
 
 ## Project Overview
-This project demonstrates the deployment of a Windows Server 2022 Domain Controller in Microsoft Azure to simulate an on-premises enterprise environment.
+This project demonstrates the deployment and configuration of a Windows Server 2022 Domain Controller in Microsoft Azure to simulate an enterprise on-premises Active Directory environment.
 
-The lab includes:
-- Active Directory Domain Services (AD DS)
-- DNS configuration
-- Domain join of a Windows client machine
-- Organizational Unit (OU) and user account management
-- Tier 1 help desk tasks (password reset, account unlock, disable)
+The lab replicates real-world Tier 1 IT Support responsibilities including domain deployment, DNS troubleshooting, user account management, and domain join configuration.
 
 ---
 
@@ -16,8 +11,8 @@ The lab includes:
 
 - 1x Windows Server 2022 VM (dc-01) – Domain Controller
 - 1x Windows Client VM (client-01) – Domain-joined workstation
-- Azure Virtual Network (VNet)
-- Custom DNS configuration pointing to Domain Controller
+- Azure Virtual Network (10.0.0.0/16)
+- Custom DNS configuration pointing to Domain Controller (10.0.0.4)
 - Domain: corp.local
 
 ---
@@ -28,47 +23,82 @@ The lab includes:
 - Windows Server 2022
 - Active Directory Domain Services (AD DS)
 - DNS
-- Remote Desktop (RDP)
+- Remote Desktop Protocol (RDP)
 
 ---
 
-## Deployment Steps (High-Level)
+## Deployment & Configuration Steps
 
 1. Created Azure Resource Group
-2. Created Virtual Network
-3. Deployed Domain Controller VM
-4. Installed and configured AD DS
+2. Created Virtual Network and Subnet
+3. Deployed Windows Server 2022 VM (dc-01)
+4. Installed Active Directory Domain Services (AD DS)
 5. Promoted server to Domain Controller (corp.local)
-6. Configured VNet DNS to DC private IP
-7. Deployed client VM
-8. Joined client to domain
-9. Created OUs and user accounts
-10. Performed help desk account management tasks
+6. Verified DNS configuration on Domain Controller
+7. Configured VNet DNS to point to DC private IP (10.0.0.4)
+8. Deployed Windows client VM (client-01)
+9. Updated client DNS settings to use Domain Controller
+10. Joined client machine to domain
+11. Restarted and validated domain authentication
+
+---
+
+## Active Directory Configuration
+
+- Created Organizational Units (OUs)
+- Created security groups
+- Created domain user accounts
+- Assigned users to security groups
+- Verified group membership
+
+---
+
+## Help Desk Task Simulation
+
+Performed common Tier 1 IT support tasks:
+
+- Password reset
+- Account unlock
+- Account disable/enable
+- Verified domain user RDP login
+
+---
+
+## Troubleshooting Performed
+
+- Resolved domain join failure caused by incorrect DNS configuration
+- Verified DNS using `ipconfig /all`
+- Restarted VMs after DNS changes
+- Resolved RDP login authorization issue by adjusting group membership
+- Confirmed domain connectivity before authentication testing
 
 ---
 
 ## Validation
 
-Screenshots in the `/screenshots` folder demonstrate:
+Screenshots located in the `/screenshots` folder demonstrate:
 
-- Azure infrastructure configuration
-- Active Directory setup
+- Azure infrastructure deployment
+- Active Directory installation
 - Successful domain join
-- Domain user authentication
-- User management tasks
+- DNS configuration validation
+- Domain user authentication via RDP
+- Help desk account management tasks
 
 ---
 
 ## Skills Demonstrated
 
 - Active Directory deployment and configuration
-- DNS setup for domain environments
+- DNS setup and troubleshooting
+- Azure networking fundamentals
 - Domain join troubleshooting
 - User account lifecycle management
-- Basic enterprise identity management
+- Identity and access management fundamentals
+- Remote Desktop troubleshooting
 
 ---
 
 ## Purpose
 
-This lab simulates real-world Tier 1 IT Support responsibilities within a controlled Azure environment.
+This lab simulates real-world enterprise IT Support responsibilities within a controlled Azure environment. It demonstrates foundational knowledge required for Help Desk, IT Support Specialist, and Junior Systems Administrator roles.
